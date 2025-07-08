@@ -11,18 +11,17 @@ export class Todo {
   ) {}
 
   markAsDone() {
-    if(this.isDone) return;
+    if (this.isDone) return;
     this.isDone = true;
-    this.updatedAt = new Date()
+    this.updatedAt = new Date();
   }
 
-  updateTitle(title: string) {
-    this.title = title
-    this.updatedAt = new Date()
-  }
-
-  updateDescription(descr: string) {
-    this.description = descr;
-    this.updatedAt = new Date()
+  update(title: string, description: string) {
+    if (!title || title.length === 0) {
+      throw new Error("Title cannot be empty");
+    }
+    this.title = title;
+    this.description = description;
+    this.updatedAt = new Date();
   }
 }
